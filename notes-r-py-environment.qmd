@@ -1,0 +1,20 @@
+---
+title: "notes-r-py-environment"
+author: "magiliberto"
+format: html
+editor: visual
+---
+
+## R & Python Environment
+
+```{bash}
+conda env create -n "ts" python=3.7 R=3.6
+conda activate ts
+conda install -c conda-forge r-renv r-rstudioapi
+conda env export -f environment.yml # create conda environment creation file
+R -e "renv::init()" --vanilla # create renv.lock renv/activate.R settings.dcf files and modify .Rprofile to run Renv
+conda env remove -n "ts"
+
+conda env create -f environment.yml
+conda activate ts
+```
