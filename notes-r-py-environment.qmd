@@ -12,8 +12,11 @@ conda env create -n "ts" python=3.7 R=3.6
 conda activate ts
 conda install -c conda-forge r-renv r-rstudioapi
 conda env export -f environment.yml # create conda environment creation file
-R -e "renv::init()" --vanilla # create renv.lock renv/activate.R settings.dcf files and modify .Rprofile to run Renv
+R -e "renv::init()" --vanilla # create renv.lock renv/activate.R files and modify .Rprofile to run Renv
+conda deactivate
 conda env remove -n "ts"
+git add .gitignore .Rprofile environment.yml renv.lock renv/.gitignore renv/activate.R renv/settings.dcf
+git commit -m "Environment files"
 
 conda env create -f environment.yml
 conda activate ts
