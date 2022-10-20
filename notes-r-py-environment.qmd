@@ -7,6 +7,8 @@ editor: visual
 
 ## R & Python Environment
 
+Creating Environment files
+
 ```{bash}
 conda env create -n "ts" python=3.7 R=3.6
 conda activate ts
@@ -17,7 +19,15 @@ conda deactivate
 conda env remove -n "ts"
 git add .gitignore .Rprofile environment.yml renv.lock renv/.gitignore renv/activate.R renv/settings.dcf
 git commit -m "Environment files"
+git push
+```
 
-conda env create -f environment.yml
+Creating Project Environment from files
+
+```{bash}
+git clone git@github.com:magiliberto/notes-time-series.git
+cd notes-time-series/
+conda env create -f environment.yml # install python and R from file environment.yml
 conda activate ts
+R -e "renv::init()" --vanilla # install R packages from renv.lock
 ```
