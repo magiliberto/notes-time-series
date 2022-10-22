@@ -7,6 +7,14 @@ editor: visual
 
 ## R & Python Environment
 
+Source:
+
+-   [renv](https://rstudio.github.io/renv/articles/renv.html)
+
+-   [renv in conda](http://russ-hyde.rbind.io/post/2021-02-23-renv-in-conda/)
+
+-   [conda](https://docs.conda.io/projects/conda/en/latest/index.html)
+
 Creating Environment files
 
 ```{bash}
@@ -30,4 +38,6 @@ cd notes-time-series/
 conda env create -f environment.yml # install python and R from file environment.yml
 conda activate ts
 R -e "renv::init()" --vanilla # install R packages from renv.lock
+
+echo "library(tidyverse)" >> _dependencies.R # used if renv doesn't update new packages
 ```
