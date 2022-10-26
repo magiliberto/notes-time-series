@@ -1,0 +1,28 @@
+conda create -p ./.env python=3.7 -y
+conda activate .env/
+conda install -y -c conda-forge r-essentials r-base r-devtools r-renv
+
+# R Cache Location set to $HOME/Renv (similar to Anaconda3)
+
+# RENV_PATHS_ROOT	The root path used for global state storage.
+# RENV_PATHS_LIBRARY	The path to the project library.
+
+echo"RENV_PATHS_CACHE=$HOME/renv" >> ./.Renviron
+# renv::settings$use.cache(FALSE) # if there are problems loading the cache
+
+R_HOME                  /home/mg/test/.env/lib/R
+R_INCLUDE_DIR           /home/mg/test/.env/lib/R/include
+R_LIBS_SITE             /home/mg/test/.env/lib/R/site-library
+R_LIBS_USER             /home/mg/R/x86_64-conda-linux-gnu-library/4.2
+
+Sys.setenv(RENV_PATHS_CACHE = paste0(Sys.getenv("HOME"),"/renv"))
+Sys.setenv(RENV_PATHS_LIBRARY = "./.env/lib/R/library")
+
+env_var             default                   new
+RENV_PATHS_ROOT     "/home/mg/.cache/R/renv"  "/home/mg/renv"
+RENV_PATHS_LIBRARY  "/home/mg/test/renv/library/R-4.2/x86_64-conda-linux-gnu" "/home/mg/test/.env/lib/R/library"
+
+Sys.setenv(RENV_PATHS_ROOT = paste0(Sys.getenv("HOME"),"/renv"))
+Sys.setenv(RENV_PATHS_CACHE = paste0(Sys.getenv("HOME"),"/renv"))
+source("renv/activate.R")
+
